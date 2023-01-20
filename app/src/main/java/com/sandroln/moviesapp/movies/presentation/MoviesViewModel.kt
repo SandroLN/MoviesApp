@@ -6,8 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.sandroln.moviesapp.movies.domain.MoviesInteractor
 import androidx.lifecycle.viewModelScope
 import com.sandroln.moviesapp.R
-import com.sandroln.moviesapp.movies.domain.MoviesResult
-import kotlinx.coroutines.launch
 
 class MoviesViewModel(
     private val handleResult: HandleNumbersRequest,
@@ -40,7 +38,7 @@ class MoviesViewModel(
         if (name.isEmpty())
             communications.showState(UiState.Error(manageResources.string(R.string.empty_name_error_message)))
         else handleResult.handle(viewModelScope){
-            interactor.movies()
+            interactor.movie(name)//todo WRONG LOGIC REFACTOR IN FUTURE(NOT NAME,NEED ID)
         }
     }
 }

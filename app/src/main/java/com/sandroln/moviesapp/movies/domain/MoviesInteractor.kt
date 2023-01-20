@@ -4,5 +4,18 @@ interface MoviesInteractor {
 
     suspend fun init(): MoviesResult
 
-    suspend fun movies(): MoviesResult
+    suspend fun movie(id: String): MoviesResult
+
+    class Base(
+        private val repository: MoviesRepository,
+        private val handleRequest: HandleRequest
+    ) : MoviesInteractor {
+
+        override suspend fun init() = MoviesResult.Success(repository.allMovies())
+
+
+        override suspend fun movie(id: String): MoviesResult = handleRequest.handle {
+            repository.movie(id)
+        }
+    }
 }
