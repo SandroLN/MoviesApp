@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MoviesApp</string>
+    <string name="empty_name_error_message">Please enter a name</string>
 </resources>
