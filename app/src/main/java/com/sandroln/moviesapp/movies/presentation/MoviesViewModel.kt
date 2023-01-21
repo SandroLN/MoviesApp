@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.sandroln.moviesapp.R
 
 class MoviesViewModel(
-    private val handleResult: HandleNumbersRequest,
+    private val handleResult: HandleMoviesRequest,
     private val manageResources: ManageResources,
     private val communications: MoviesCommunication,
     private val interactor: MoviesInteractor,

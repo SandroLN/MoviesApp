@@ -2,6 +2,6 @@ package com.sandroln.moviesapp.movies.domain
 
 abstract class DomainException : IllegalStateException()
 
-class NoConnectionException : DomainException()
+class NoInternetConnectionException : DomainException()
 
-class ServiceUnavailable : DomainException()
+class ServiceUnavailableException : DomainException()

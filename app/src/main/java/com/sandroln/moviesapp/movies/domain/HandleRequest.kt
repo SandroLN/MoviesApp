@@ -5,7 +5,7 @@ interface HandleRequest {
     suspend fun handle(block: suspend () -> Unit): MoviesResult
 
     class Base(
-        private val handleError: HandleError,
+        private val handleError: HandleError<String>,
         private val repository: MoviesRepository
     ) : HandleRequest {
 

@@ -4,7 +4,7 @@ import com.sandroln.moviesapp.movies.domain.MoviesResult
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-interface HandleNumbersRequest {
+interface HandleMoviesRequest {
 
     fun handle(
         coroutineScope: CoroutineScope,
@@ -14,8 +14,8 @@ interface HandleNumbersRequest {
     class Base(
         private val dispatchers: DispatchersList,
         private val communications: MoviesCommunication,
-        private val numbersResultMapper: MoviesResult.Mapper<Unit>,
-    ) : HandleNumbersRequest {
+        private val moviesResultMapper: MoviesResult.Mapper<Unit>,
+    ) : HandleMoviesRequest {
 
         override fun handle(
             coroutineScope: CoroutineScope,
@@ -25,7 +25,7 @@ interface HandleNumbersRequest {
             coroutineScope.launch(dispatchers.io()) {
                 val result = block.invoke()
                 communications.showProgress(false)
-                result.map(numbersResultMapper)
+                result.map(moviesResultMapper)
             }
         }
     }
